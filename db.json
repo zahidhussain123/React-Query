@@ -1,0 +1,24 @@
+{
+    "superheroes" : [
+        {
+            "id" : 1,
+            "name": "Batman"
+            
+        },
+        {
+            "id" : 2,
+            "name": "ShaktiMaan"
+
+        },
+        {
+            "id" : 3,
+            "name": "Commander Safeguard"
+
+        },
+        {
+            "id" : 4,
+            "name": "Bijli2"
+
+        }
+    ]
+}
