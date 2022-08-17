@@ -9,6 +9,9 @@ const HomepageQuery = () => {
       return axios
         .get("http://localhost:4000/superheroes")
         .then((res) => res.data);
+    },
+    {
+      cacheTime: 5000,
     }
   );
   console.log({ isLoading, isFetching });
