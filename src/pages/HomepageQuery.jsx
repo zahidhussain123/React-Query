@@ -11,7 +11,7 @@ const HomepageQuery = () => {
         .then((res) => res.data);
     },
     {
-      cacheTime: 5000,
+      staleTime: 30000,
     }
   );
   console.log({ isLoading, isFetching });
