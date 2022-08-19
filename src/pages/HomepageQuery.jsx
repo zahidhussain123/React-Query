@@ -1,6 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import React from "react";
+import useRTQueryCustom from "../hooks/useRTQueryCustom";
 
 const HomepageQuery = () => {
   const onSuccess = (data) => {
@@ -10,21 +9,9 @@ const HomepageQuery = () => {
   const onError = (error) => {
     console.log("This is the error api request", error);
   };
-  const { data, isLoading, isError, error, isFetching } = useQuery(
-    ["superheros"],
-    () => {
-      return axios
-        .get("http://localhost:4000/superheroes")
-        .then((res) => res.data);
-    },
-    {
-      onSuccess,
-      onError,
-      select: (data) => {
-        const superheroData = data.map((hero) => hero.name);
-        return superheroData;
-      },
-    }
+  const { data, isLoading, isError, error, isFetching } = useRTQueryCustom(
+    onSuccess,
+    onError
   );
   console.log({ isLoading, isFetching });
 
@@ -66,7 +53,7 @@ const HomepageQuery = () => {
       >
         This is React Fetch Api using React Query
       </h2>
-      {/* {data?.map((user) => (
+      {data?.map((user) => (
         <div
           style={{
             display: "flex",
@@ -79,11 +66,7 @@ const HomepageQuery = () => {
             <span>{user.name}</span>
           </div>
         </div>
-      ))} */}
-
-      {data.map((user) => {
-        return <h2>{user}</h2>;
-      })}
+      ))}
     </>
   );
 };
