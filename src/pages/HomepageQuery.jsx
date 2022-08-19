@@ -11,8 +11,7 @@ const HomepageQuery = () => {
         .then((res) => res.data);
     },
     {
-      refetchOnMount: false, //refetching from the server ....if keep it true it will make request to fetch data and if keep false then it wont fetch
-      refetchOnWindowFocus: "always", //if anything changes at the background or from server then it will automatically update the require data without any need of refresh
+      refetchInterval: 3000,
     }
   );
   console.log({ isLoading, isFetching });
