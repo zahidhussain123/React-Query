@@ -3,7 +3,7 @@ import axios from "axios";
 import React from "react";
 
 const HomepageQuery = () => {
-  const { data, isLoading, isError, error, isFetching } = useQuery(
+  const { data, isLoading, isError, error, isFetching, refetch } = useQuery(
     ["superheros"],
     () => {
       return axios
@@ -11,7 +11,7 @@ const HomepageQuery = () => {
         .then((res) => res.data);
     },
     {
-      refetchInterval: 3000,
+      enabled: false,
     }
   );
   console.log({ isLoading, isFetching });
@@ -30,7 +30,7 @@ const HomepageQuery = () => {
     );
   }
 
-  if (isLoading) {
+  if (isLoading && isFetching) {
     return (
       <h2
         style={{
@@ -54,6 +54,7 @@ const HomepageQuery = () => {
       >
         This is React Fetch Api using React Query
       </h2>
+      <button onClick={refetch}>Refetching</button>
       {data?.map((user) => (
         <div
           style={{
