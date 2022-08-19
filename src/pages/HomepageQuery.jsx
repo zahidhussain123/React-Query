@@ -20,6 +20,10 @@ const HomepageQuery = () => {
     {
       onSuccess,
       onError,
+      select: (data) => {
+        const superheroData = data.map((hero) => hero.name);
+        return superheroData;
+      },
     }
   );
   console.log({ isLoading, isFetching });
@@ -62,7 +66,7 @@ const HomepageQuery = () => {
       >
         This is React Fetch Api using React Query
       </h2>
-      {data?.map((user) => (
+      {/* {data?.map((user) => (
         <div
           style={{
             display: "flex",
@@ -75,7 +79,11 @@ const HomepageQuery = () => {
             <span>{user.name}</span>
           </div>
         </div>
-      ))}
+      ))} */}
+
+      {data.map((user) => {
+        return <h2>{user}</h2>;
+      })}
     </>
   );
 };
