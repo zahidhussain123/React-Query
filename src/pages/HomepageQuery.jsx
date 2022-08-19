@@ -1,6 +1,6 @@
 import React from "react";
 import useRTQueryCustom from "../hooks/useRTQueryCustom";
-
+import { Link } from "react-router-dom";
 const HomepageQuery = () => {
   const onSuccess = (data) => {
     console.log("This is the success api request", data);
@@ -62,8 +62,10 @@ const HomepageQuery = () => {
           }}
         >
           <div key={user.id}>
-            {user.id}
-            <span>{user.name}</span>
+            <Link to={`/homequerypage/${user.id}`}>
+              {user.id}
+              <span>{user.name}</span>
+            </Link>
           </div>
         </div>
       ))}
